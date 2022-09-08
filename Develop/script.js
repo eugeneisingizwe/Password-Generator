@@ -55,7 +55,8 @@ if(specialCharacters){
   selectLetter = selectLetter.concat(specialCharacters)
 }
 
-for (let index = 0; index < passwordLenght; index++){
+//Returns a string of concatented characters of length password 
+for (var i = 0; i < passwordLenght; i++){
   var randomCharacter = random(selectLetter);
 
   finalPassword.poush(randomCharacter);
@@ -64,16 +65,14 @@ for (let index = 0; index < passwordLenght; index++){
 return finalPassword.join(" ");
 
 }
-
-function random(array){
+  function random(array){
   return array[Math.floor(Math.random()*array.lenght)];
 }
 
-
 // Write password to the #password input
 function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector("#password");
+ var password = generatePassword();
+ var passwordText = document.querySelector("#password");
 
   //Converted to password to make comparison easier
   passwordText.value = password;
