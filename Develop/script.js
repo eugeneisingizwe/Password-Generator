@@ -15,11 +15,11 @@ function generatePassword(){
 //Promtes length of password at least 8 characters and no more than 128 characters
   var passwordLenght = parseInt(prompt("please choose a passowrd length of at least 8 characters and no more than 128 characters"));
   if (passwordLenght < 8 || passwordLenght > 128){
-    alert("please enter betweern 8 characters and 128 charactars.");
+    alert("please enter between 8 characters and 128 charactars.");
     return null;
-  }
-//Determines the passed value and the type 
-  if (number.isNaN(passwordLenght)){
+ }
+// //Determines the passed value and the type 
+  if (Number.isNaN(passwordLenght)){
     alert("please enter numbers only");
     return null;
   }
@@ -28,45 +28,49 @@ function generatePassword(){
 
   var lowerCase = confirm("Include lower case letters?")
   var upperCase = confirm("Include upper case letters?")
-  var numbers = confirm("Incldue numbers")
+  var number = confirm("Incldue numbers")
   var specialCharacters = confirm("Include special characters?")
 
   //check condtion for at least one password 
 
-if(!lowerCase && !upperCase && !numbers && !specialCharacters){
+if(!lowerCase && !upperCase && !number && !specialCharacters){
   alert("select at least one option");
   return null;
 }
 
 //Adding a concat() method to merge the arrys used to create the blanks and letters
 if(lowerCase){
-  selectLetter = selectLetter.concat(lowerCase)
+  selectLetter = selectLetter.concat(alphabet)
 }
 
 if(upperCase){
-  selectLetter = selectLetter.concat(upperCase)
+  selectLetter = selectLetter.concat(upperAlpha)
 }
 
-if(numbers){
+if(number){
   selectLetter = selectLetter.concat(numbers)
 }
 
 if(specialCharacters){
-  selectLetter = selectLetter.concat(specialCharacters)
+  selectLetter = selectLetter.concat(symbols)
 }
+console.log(selectLetter)
 
 //Returns a string of concatented characters of length password 
 for (var i = 0; i < passwordLenght; i++){
   var randomCharacter = random(selectLetter);
+  console.log(randomCharacter)
 
-  finalPassword.poush(randomCharacter);
+  finalPassword.push(randomCharacter);
 }
 
-return finalPassword.join(" ");
+return finalPassword.join("");
 
 }
   function random(array){
-  return array[Math.floor(Math.random()*array.lenght)];
+    var randomIndex = Math.floor(Math.random()*array.length)
+   var randomCharacter = array[randomIndex];
+   return randomCharacter;
 }
 
 // Write password to the #password input
