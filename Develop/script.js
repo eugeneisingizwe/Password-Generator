@@ -13,28 +13,28 @@ function generatePassword(){
   var selectLetter = [];
   var finalPassword = [];
 //Promtes length of password at least 8 characters and no more than 128 characters
-  var passwordLenght = parseInt(prompt("please choose a passowrd length of at least 8 characters and no more than 128 characters"));
+  var passwordLenght = parseInt(prompt("How many charactars would like your password to be? Please choose between 8 and 128"));
   if (passwordLenght < 8 || passwordLenght > 128){
-    alert("please enter between 8 characters and 128 charactars.");
+    alert("please enter number between 8 and 128");
     return null;
  }
 // //Determines the passed value and the type 
   if (Number.isNaN(passwordLenght)){
-    alert("please enter numbers only");
+    alert("Please enter numbers only");
     return null;
   }
 
-  //Confirms whether or not to incldue lowerCase, uppserCase, number, and/or specail characters  
+  //Confirms whether or not for the user to incldue lowerCase, uppserCase, number, and/or specail characters  
 
-  var lowerCase = confirm("Include lower case letters?")
-  var upperCase = confirm("Include upper case letters?")
-  var number = confirm("Incldue numbers")
-  var specialCharacters = confirm("Include special characters?")
+  var lowerCase = confirm("Password will include lower case letters!")
+  var upperCase = confirm("Password will include upper case letters!")
+  var number = confirm("Password will incldue numbers!")
+  var specialCharacters = confirm("Password will include special characters!")
 
   //check condtion for at least one password 
 
 if(!lowerCase && !upperCase && !number && !specialCharacters){
-  alert("select at least one option");
+  alert("You must select at least one option");
   return null;
 }
 
@@ -85,3 +85,15 @@ function writePassword() {
 
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
+
+var copy = document.querySelector("#copy");
+copy.addEventListener("click", function(){
+  copyPassword();
+})
+
+function copyPassword() {
+  document.getElementById("password").select();
+  document.execCommand("copy");
+  alert("Passowrd copied to clipboard!");
+}
+
